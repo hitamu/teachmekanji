@@ -1,8 +1,6 @@
-import express from 'express';
+import http from 'http';
 import Bot from 'slackbot-api';
 import db from './db.json';
-
-let app = express();
 
 const token = process.env.SLACK_TOKEN;
 const bot = new Bot({ token: token });
@@ -25,10 +23,10 @@ bot.listen(/help/i, message => {
     message.reply('"Show me level 2 Kanji"');
 });
 
-const port = process.env.PORT || 3000;
-app.get('/', (req, res) => {
-     res.send("Bot is running")
-})
-app.listen(port, () => {
-     console.log("Running application");
-})
+http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Bot is running');
+
+}).listen(port);
+
+console.log('Server running');
