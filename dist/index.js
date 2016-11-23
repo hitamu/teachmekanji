@@ -18,6 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var token = process.env.SLACK_TOKEN;
 var bot = new _slackbotApi2.default({ token: token });
+var port = process.env.PORT || 3000;
 
 bot.command('show me level <number>', function (message) {
     var _message$match = _slicedToArray(message.match, 1),

@@ -4,6 +4,7 @@ import db from './db.json';
 
 const token = process.env.SLACK_TOKEN;
 const bot = new Bot({ token: token });
+const port = process.env.PORT || 3000;
 
 bot.command('show me level <number>', message => {
     const [level] = message.match;
