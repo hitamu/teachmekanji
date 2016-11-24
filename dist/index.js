@@ -29,6 +29,7 @@ bot.command('show me level <number>', function (message) {
     }).map(function (x) {
         return x.kanji.character;
     });
+    message.react("+1");
     message.reply(kanji.toString());
 });
 

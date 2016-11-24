@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 bot.command('show me level <number>', message => {
     const [level] = message.match;
     const kanji = db.filter(x => x.references.grade == level).map(x => x.kanji.character);
+    message.react("+1");
     message.reply(kanji.toString());
 });
 

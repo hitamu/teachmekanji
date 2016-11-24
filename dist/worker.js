@@ -27,7 +27,7 @@ var selfCalling = function selfCalling() {
 };
 
 var keepAlive = function keepAlive() {
-	var duration = 1 * 1000;
+	var duration = 20 * 60 * 1000;
 	setInterval(selfCalling, duration);
 };
 
