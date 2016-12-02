@@ -1,4 +1,5 @@
 import db from './db.json';
+import * as builder from './builder.js';
 
 class Processor {
 	constructor(bot) {
@@ -6,9 +7,11 @@ class Processor {
 	}
 
 	_help(message) {
-		message.reply("Ask me a question like: ");
-		message.reply('"What is rain"');
-		message.reply('"Show me level 2 Kanji"');
+		message.reply(
+			"Ask me a question like: \n" + 
+			"What is rain ?\n" +
+			"Show me level 2 Kanji\n"
+		);
 	}
 
 	_showByLevel(message) {
@@ -20,9 +23,11 @@ class Processor {
 
 	_showDetailKanji(message) {
 		const [meaning] = message.match;
-		const kanji = db.filter(x => x.kanji.meaning.english == meaning).map(x => x.kanji.character);
+		const kanji = db.filter(x => x.kanji.meaning.english == meaning);
+		const text = builder.generate(kanji);
+
 		message.react("+1");
-		message.reply(kanji.toString());
+		message.reply(text);
 	}
 
 	listenAndProcess() {

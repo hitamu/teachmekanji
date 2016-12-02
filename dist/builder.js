@@ -3,26 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var MessageBuilder = function () {
-	function MessageBuilder(text) {
-		_classCallCheck(this, MessageBuilder);
-
-		this.text = text;
+exports.generate = generate;
+function generate(word) {
+	if (word.isArray) {
+		var _kanji = word[0].kanji;
+		var _examples = word[0].examples;
 	}
+	var kanji = word.kanji;
+	var examples = word.examples;
 
-	_createClass(MessageBuilder, [{
-		key: "print",
-		value: function print() {
-			console.log(this.text);
-		}
-	}]);
-
-	return MessageBuilder;
-}();
-
-exports.default = MessageBuilder;
+	var text = "Character: " + kanji.character + "\n" + "Meaning: " + kanji.meaning.english + "\n" + "Onyomi: " + kanji.onyomi.katakana + "\n" + "Kunyomi: " + kanji.kunyomi.hiragana + "\n" + "Video: " + kanji.video.mp4 + "\n" + "Example: " + examples.map(function (e) {
+		return e.japanese + ": " + e.meaning.english + "\n";
+	});
+	return text;
+}
