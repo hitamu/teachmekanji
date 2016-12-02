@@ -1,10 +1,6 @@
 export function generate(word) {
-	if(word.isArray) {
-		const kanji = word[0].kanji;
-		const examples = word[0].examples;
-	}
-	const kanji = word.kanji;
-	const examples = word.examples;
+	let kanji = word.kanji;
+	let examples = word.examples;	
 	
 	const text = "Character: " + kanji.character + "\n" +
 		"Meaning: " + kanji.meaning.english + "\n" +

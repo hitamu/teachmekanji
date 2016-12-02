@@ -49,7 +49,6 @@ var Scheduler = function () {
 
 			_nodeSchedule2.default.scheduleJob(this.rule, function () {
 				var kanji = _this.bot.random(_db2.default);
-				console.log(kanji);
 				var text = builder.generate(kanji);
 				_this.bot.sendMessage("thu_nx", text);
 			});

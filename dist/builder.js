@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.generate = generate;
 function generate(word) {
-	if (word.isArray) {
-		var _kanji = word[0].kanji;
-		var _examples = word[0].examples;
-	}
 	var kanji = word.kanji;
 	var examples = word.examples;
 

@@ -24,7 +24,7 @@ class Processor {
 	_showDetailKanji(message) {
 		const [meaning] = message.match;
 		const kanji = db.filter(x => x.kanji.meaning.english == meaning);
-		const text = builder.generate(kanji);
+		const text = builder.generate(kanji[0]);
 
 		message.react("+1");
 		message.reply(text);

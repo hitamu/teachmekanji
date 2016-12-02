@@ -57,7 +57,7 @@ var Processor = function () {
 			var kanji = _db2.default.filter(function (x) {
 				return x.kanji.meaning.english == meaning;
 			});
-			var text = builder.generate(kanji);
+			var text = builder.generate(kanji[0]);
 
 			message.react("+1");
 			message.reply(text);
