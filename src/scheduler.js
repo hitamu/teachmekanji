@@ -16,7 +16,7 @@ class Scheduler {
 
 	run() {
 		Schedule.scheduleJob(this.rule, () => {
-			const kanji = this.bot.random(db);
+			const kanji = this.bot.random(db.filter(x => x.references.grade == 1));
 			const text = builder.generate(kanji);
     		this.bot.sendMessage("thu_nx", text);
 		});

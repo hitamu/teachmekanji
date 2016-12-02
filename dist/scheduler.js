@@ -48,7 +48,9 @@ var Scheduler = function () {
 			var _this = this;
 
 			_nodeSchedule2.default.scheduleJob(this.rule, function () {
-				var kanji = _this.bot.random(_db2.default);
+				var kanji = _this.bot.random(_db2.default.filter(function (x) {
+					return x.references.grade == 1;
+				}));
 				var text = builder.generate(kanji);
 				_this.bot.sendMessage("thu_nx", text);
 			});
