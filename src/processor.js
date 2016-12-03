@@ -1,5 +1,5 @@
 import db from './db.json';
-import * as builder from './builder.js';
+import * as builder from './message.js';
 
 class Processor {
   constructor(bot) {

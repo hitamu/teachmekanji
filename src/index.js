@@ -3,6 +3,7 @@ import SlackBot from 'slackbot-api';
 import Worker from './worker.js';
 import Scheduler from './scheduler.js';
 import Processor from './processor.js';
+require('babel-core/register');
 
 const token = process.env.SLACK_TOKEN;
 const slackbot = new SlackBot({ token: token });

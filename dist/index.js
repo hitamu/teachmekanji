@@ -22,6 +22,8 @@ var _processor2 = _interopRequireDefault(_processor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+require('babel-core/register');
+
 var token = process.env.SLACK_TOKEN;
 var slackbot = new _slackbotApi2.default({ token: token });
 

@@ -1,3 +1,3 @@
-# teachMeKanji
+# Teach me Kanji
 
-Learn Kanji via Slackbot
+## Learn Kanji via Slackbot
