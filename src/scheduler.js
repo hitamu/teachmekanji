@@ -3,24 +3,24 @@ import db from './db.json';
 import * as builder from './builder.js';
 
 class Scheduler {
-	constructor(bot) {
-		this.bot = bot;
-		this.rule = new Schedule.RecurrenceRule();
-	}
-	
-	setTime(hour, minute, start = 1, end = 5) {
-		this.rule.dayOfWeek = new Schedule.Range(start, end);
-		this.rule.hour = hour;
-		this.minute = minute;
-	}
+  constructor(bot) {
+    this.bot = bot;
+    this.rule = new Schedule.RecurrenceRule();
+  }
+  
+  setTime(hour, minute, start = 1, end = 5) {
+    this.rule.dayOfWeek = new Schedule.Range(start, end);
+    this.rule.hour = hour;
+    this.minute = minute;
+  }
 
-	run() {
-		Schedule.scheduleJob(this.rule, () => {
-			const kanji = this.bot.random(db.filter(x => x.references.grade == 1));
-			const text = builder.generate(kanji);
-    		this.bot.sendMessage("thu_nx", text);
-		});
-	}
+  run() {
+    Schedule.scheduleJob(this.rule, () => {
+      const kanji = this.bot.random(db.filter(x => x.references.grade == 1));
+      const text = builder.generate(kanji);
+        this.bot.sendMessage("thu_nx", text);
+    });
+  }
 }
 
 export default Scheduler
