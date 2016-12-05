@@ -14,6 +14,7 @@ class Processor {
       " - What is rain ?\n" +
       " - Show me level 2 Kanji\n" +
       " - Spelling is hito\n" +
+      " - Find 雨\n" +
       "-----------------------------\n"
     );
   }
@@ -39,7 +40,8 @@ class Processor {
 
   _showByLevel(message) {
     const [level] = message.match;
-    const kanji = this.repo.getByGrade(level);
+    const repo = new Repository();
+    const kanji = repo.getByGrade(level);
 
     message.react("+1");
     message.reply(kanji.toString());
@@ -47,7 +49,8 @@ class Processor {
 
   _showByMeaning(message) {
     const [meaning] = message.match;
-    const [kanji] = this.repo.getByMeaning(meaning);
+    const repo = new Repository();
+    const [kanji] = repo.getByMeaning(meaning);
     const text = builder.generate(kanji);
 
     message.react("+1");
@@ -55,11 +58,12 @@ class Processor {
   }
 
   listenAndProcess() {
-    this.bot.command('level <number>', this._showByLevel);
-    this.bot.command('what is <word>', this._showByMeaning);
-    this.bot.command('spelling is <word>', this._showBySpelling);
-    this.bot.command('find <string>', this._showByKanji);
-    this.bot.listen(/help/i, this._help);
+    this.bot.command('level <number>',      this._showByLevel);
+    this.bot.command('what is <word>',      this._showByMeaning);
+    this.bot.command('spelling is <word>',  this._showBySpelling);
+    this.bot.command('find <string>',       this._showByKanji);
+    
+    this.bot.listen(/help/i,                this._help);
   }
 }
 export default Processor
