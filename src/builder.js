@@ -2,7 +2,12 @@ class Builder {
 	constructor(bot) {
 		this.bot = bot
 	}
-	generate() {
+	
+	detailKanji() {
+		return this.bot;
+	}
+
+	listKanji() {
 		return this.bot;
 	}
 }
