@@ -1,4 +1,4 @@
-import db from './db.json';
+import db from '../data/db.json';
 import * as builder from './message.js';
 
 class Processor {

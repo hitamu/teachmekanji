@@ -1,5 +1,5 @@
 import Schedule from 'node-schedule';
-import db from './db.json';
+import db from '../data/db.json';
 import * as builder from './message.js';
 
 class Scheduler {
