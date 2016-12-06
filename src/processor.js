@@ -44,7 +44,7 @@ class Processor {
     const kanji = repo.getByGrade(level);
 
     message.react("+1");
-    message.reply(kanji.toString());
+    message.reply(kanji.map(x => x.kanji.character).toString())
   }
 
   _showByMeaning(message) {
@@ -62,7 +62,7 @@ class Processor {
     this.bot.command('what is <word>',      this._showByMeaning);
     this.bot.command('spelling is <word>',  this._showBySpelling);
     this.bot.command('find <string>',       this._showByKanji);
-    
+
     this.bot.listen(/help/i,                this._help);
   }
 }
