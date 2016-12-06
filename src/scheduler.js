@@ -1,6 +1,6 @@
 import Schedule from 'node-schedule';
-import db from '../data/db.json';
-import * as builder from './message.js';
+import * as builder from './builder';
+import Repository from './repository';
 
 class Scheduler {
   constructor(bot) {
@@ -16,9 +16,10 @@ class Scheduler {
 
   run() {
     Schedule.scheduleJob(this.rule, () => {
-      const kanji = this.bot.random(db.filter(x => x.references.grade == 1));
-      const text = builder.generate(kanji);
-        this.bot.sendMessage("thu_nx", text);
+      const repo = new Repository();
+      const kanji = this.bot.random(repo.getByGrade(1));
+      const result = builder.generateDetailOf(kanji);
+        this.bot.sendMessage("thu_nx", "Let's learn this kanji", result);
     });
   }
 }

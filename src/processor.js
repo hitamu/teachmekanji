@@ -1,10 +1,10 @@
-import * as builder from './message';
 import Repository from './repository';
+import * as builder from './builder';
 
 class Processor {
   constructor(bot) {
-    this.repo = new Repository();
     this.bot = bot;
+    this.repo = new Repository();
   }
 
   _help(message) {
@@ -22,39 +22,43 @@ class Processor {
   _showByKanji(message) {
     const [char] = message.match;
     const repo = new Repository();
+    const builder = new Builder();
     const [kanji] = repo.getByCharacter(char);
-    const text = builder.generate(kanji);
+    const result = builder.generateDetailOf(kanji);
 
     message.react("+1");
-    message.reply(text);
+    message.reply(`Here your are`, result);
   }
 
   _showBySpelling(message) {
     const [spelling] = message.match;
     const repo = new Repository();
     const kanji = repo.getBySpelling(spelling);
+    const result = builder.generateList(kanji);
 
     message.react("+1");
-    message.reply(kanji.map(x => x.kanji.character).toString())
+    message.reply("Here your are", result);
   }
 
   _showByLevel(message) {
     const [level] = message.match;
     const repo = new Repository();
     const kanji = repo.getByGrade(level);
+    const result = builder.generateList(kanji);
 
     message.react("+1");
-    message.reply(kanji.map(x => x.kanji.character).toString())
+    message.reply("Here your are", result);
   }
 
   _showByMeaning(message) {
+    const self = this;
     const [meaning] = message.match;
     const repo = new Repository();
     const [kanji] = repo.getByMeaning(meaning);
-    const text = builder.generate(kanji);
+    const result = builder.generateDetailOf(kanji);
 
     message.react("+1");
-    message.reply(text);
+    message.reply(`Here your are`, result);
   }
 
   listenAndProcess() {
