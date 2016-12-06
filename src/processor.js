@@ -22,7 +22,6 @@ class Processor {
   _showByKanji(message) {
     const [char] = message.match;
     const repo = new Repository();
-    const builder = new Builder();
     const [kanji] = repo.getByCharacter(char);
     const result = builder.generateDetailOf(kanji);
 
