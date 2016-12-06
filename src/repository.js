@@ -12,19 +12,19 @@ class Repository {
 	}
 
   getByCharacter(char) {
-    return this.entities.filter(x => x.kanji.character === char);
+    return this.entities.filter(x => x.kanji.character == char);
   }
 
 	getByGrade(level) {
-		return this.entities.filter(x => x.references.grade === level);
+		return this.entities.filter(x => x.references.grade == level);
 	}
 
   getByKunyomi(str) {
-    return this.entities.filter(x => x.kanji.kunyomi.romaji === str);
+    return this.entities.filter(x => x.kanji.kunyomi.romaji == str);
   }
 
   getByOnyomi(str) {
-    return this.entities.filter(x => x.kanji.onyomi.romaji === str);
+    return this.entities.filter(x => x.kanji.onyomi.romaji == str);
   }
 
   getBySpelling(str) {

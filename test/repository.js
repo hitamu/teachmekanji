@@ -37,7 +37,7 @@ describe('Repository', () => {
   describe('getByGrade', () => {
     it('should return kanjies which have correct grade', done => {
       const repo = new Repository();
-      repo.getByGrade(1).should.have.length(80);
+      repo.getByGrade("1").should.have.length(80);
       done();
     })
   })
