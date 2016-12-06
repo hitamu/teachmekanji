@@ -59,5 +59,14 @@ describe('Repository', () => {
       _.first(result).kanji.meaning.english.should.equal("rain");
       done();
     })
+
+    it('should return kanji when it has multiple meaning', done => {
+      const repo = new Repository();
+      const result = repo.getByMeaning("metal");
+      const meaning = _.first(result).kanji.meaning.english;
+      meaning.should.contain('gold');
+      meaning.should.contain('money');
+      done();
+    })
   })
 })

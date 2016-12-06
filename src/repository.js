@@ -32,7 +32,8 @@ class Repository {
 	}
 
   getByMeaning(str) {
-    return this.entities.filter(x => x.kanji.meaning.english === str);
+    const withMeaning = meanings => _.includes(meanings.replace(/\s/g, "").split(","), str);
+    return this.entities.filter(x => withMeaning(x.kanji.meaning.english));
   }
 }
 
