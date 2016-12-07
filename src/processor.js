@@ -16,14 +16,14 @@ class Processor {
     const result = builder.generateDetailOf(kanji);
 
     message.react("+1");
-    message.reply(":robot_face:", result);
+    message.reply("Here it is :point_down:", result);
   }
 
   _replyList(kanji, message) {
     const result = builder.generateList(kanji);
 
     message.react("+1");
-    message.reply("Here you are", result);
+    message.reply("Here you are :eyes:", result);
   }
 
   _replyNotFound(message) {
