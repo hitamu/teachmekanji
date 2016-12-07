@@ -27,9 +27,9 @@ class Processor {
   }
 
   _replyNotFound(message) {
+    message.react("disappointed");
     message.reply("Sorry, I could not find out what you wanted.");
   }
-
 
   _showByKanji = (message) => {
     const [char] = message.match;

@@ -1,8 +1,9 @@
 import http from 'http';
 import SlackBot from 'slackbot-api';
-import Worker from './worker.js';
-import Scheduler from './scheduler.js';
-import Processor from './processor.js';
+import Worker from './worker';
+import Scheduler from './scheduler';
+import Processor from './processor';
+import {TEACHING_HOURS} from './config'
 require('babel-core/register');
 
 const token = process.env.SLACK_TOKEN;
@@ -14,7 +15,7 @@ worker.keepALive();
 
 /* Send Kanji word every day at scheduled time */
 const scheduler = new Scheduler(slackbot);
-scheduler.setTime(17, 15);
+scheduler.setTime(TEACHING_HOURS);
 scheduler.run();
 
 /* Listen and answer question */
