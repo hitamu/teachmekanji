@@ -20,11 +20,11 @@ class Repository {
 	}
 
   getByKunyomi(str) {
-    return this.entities.filter(x => x.kanji.kunyomi.romaji == str);
+    return this.entities.filter(x => _.includes(this.toArray(x.kanji.kunyomi.romaji), str));
   }
 
   getByOnyomi(str) {
-    return this.entities.filter(x => x.kanji.onyomi.romaji == str);
+    return this.entities.filter(x => _.includes(this.toArray(x.kanji.onyomi.romaji), str));
   }
 
   getBySpelling(str) {
@@ -32,8 +32,12 @@ class Repository {
 	}
 
   getByMeaning(str) {
-    const withMeaning = meanings => _.includes(meanings.replace(/\s/g, "").split(","), str);
+    const withMeaning = meanings => _.includes(this.toArray(meanings), str);
     return this.entities.filter(x => withMeaning(x.kanji.meaning.english));
+  }
+
+  toArray(str) {
+    return str.replace(/\s/g, "").split(",");
   }
 }
 

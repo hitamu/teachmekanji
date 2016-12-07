@@ -8,14 +8,11 @@ class Worker {
     this.duration = duration;
   }
 
-  _log() {
+  selfCalling() {
+    http.get({host: this.host, port: this.port});
+
     let now = new Date();
     console.log(`Self called at ${now.toString()}`);
-  }
-
-  selfCalling() {
-    this._log();
-    http.get({host: this.host, port: this.port});
   }
 
   keepALive() {

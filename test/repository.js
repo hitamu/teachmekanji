@@ -46,7 +46,14 @@ describe('Repository', () => {
     it('should return kanjies which have correct spelling', done => {
       const repo = new Repository();
       const result = repo.getBySpelling("hito");
-      result.should.have.length(2); // ichi - kunyomi & hito - unyomi
+      result.should.have.length.above(1);
+      done();
+    })
+
+    it('should return kanjies which has multiple spelling', done => {
+      const repo = new Repository();
+      const result = repo.getBySpelling("ame");
+      result.should.have.length.above(1);
       done();
     })
   })

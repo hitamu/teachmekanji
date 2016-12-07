@@ -12,8 +12,8 @@ class Processor {
       "-----------------------------\n" +
       "Ask me a question like: \n" + 
       " - What is rain ?\n" +
-      " - Show me level 2 Kanji\n" +
-      " - Spelling is hito\n" +
+      " - Show me level 1 Kanji\n" +
+      " - Spelling is ame\n" +
       " - Find 雨\n" +
       "-----------------------------\n"
     );
