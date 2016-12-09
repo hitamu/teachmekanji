@@ -8,7 +8,7 @@ class Repository {
 	}
 
 	getAll() {
-		return this.entities;
+    return this.entities;
 	}
 
   getByCharacter(char) {
@@ -16,7 +16,7 @@ class Repository {
   }
 
 	getByGrade(level) {
-		return this.entities.filter(x => x.references.grade == level);
+    return this.entities.filter(x => x.references.grade == level);
 	}
 
   getByKunyomi(str) {
