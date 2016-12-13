@@ -1,12 +1,6 @@
-export const HOST = "https://teachmekanji.herokuapp.com";
-
-export const PORT = 80;
-
-export const DURATION = 1200000; // 20 minutes
-
 export const AUTHOR = "@hitamu";
 
-export const CHANNEL = "#tmk";
+export const CHANNEL = "tmk";
 
 // Heroku server timezone GMT(+0)
 // Vietnamese GMT(+7)

@@ -1,6 +1,5 @@
 import http from 'http';
 import SlackBot from 'slackbot-api';
-import Worker from './worker';
 import Scheduler from './scheduler';
 import Processor from './processor';
 import {TEACHING_HOURS} from './config'
@@ -8,10 +7,6 @@ require('babel-core/register');
 
 const token = process.env.SLACK_TOKEN;
 const slackbot = new SlackBot({ token: token });
-
-/* Keep Heroku instance doesn't idle */
-const worker = new Worker();
-worker.keepALive();
 
 /* Send Kanji word every day at scheduled time */
 const scheduler = new Scheduler(slackbot);
