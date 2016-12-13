@@ -7,7 +7,6 @@ class Scheduler {
   constructor(bot) {
     this.bot = bot;
     this.repo = new Repository();
-    this.kanji = this._getRandomKanji();
     this.rules = [];
   }
   
@@ -22,7 +21,7 @@ class Scheduler {
   }
 
   _getRandomKanji = () => {
-    this.kanji = this.bot.random(this.repo.getByGrade(1));
+    return this.bot.random(this.repo.getByGrade(1));
   }
 
   setTime(timeArr) {
@@ -33,7 +32,8 @@ class Scheduler {
     // Send message to slack at scheduled time
     this.rules.map(rule => {
       Schedule.scheduleJob(rule, () => {
-        let result = builder.generateDetailOf(this.kanji);
+        const kanji = this._getRandomKanji();
+        const result = builder.generateDetailOf(kanji);
         this.bot.sendMessage(CHANNEL, "Let's learn this kanji", result);
       })
     })
