@@ -2,7 +2,7 @@ export const AUTHOR = "@hitamu";
 
 export const CHANNEL = "teachmekanji";
 
-// Heroku server timezone GMT(+0)
+// Server timezone GMT(+0)
 // Vietnamese GMT(+7)
 export const TEACHING_HOURS = [
   {hour: 1,  minute: 45},
