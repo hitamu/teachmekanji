@@ -6,7 +6,7 @@ import {CHANNEL} from './config';
 class Scheduler {
   constructor(bot) {
     this.bot = bot;
-    this.repo = new Repository();
+    this.repo = new Repository("vi");
     this.rules = [];
   }
   
@@ -21,7 +21,7 @@ class Scheduler {
   }
 
   _getRandomKanji = () => {
-    return this.bot.random(this.repo.getByGrade(1));
+    return this.bot.random(this.repo.getAll());
   }
 
   setTime(timeArr) {
@@ -33,7 +33,7 @@ class Scheduler {
     this.rules.map(rule => {
       Schedule.scheduleJob(rule, () => {
         const kanji = this._getRandomKanji();
-        const result = builder.generateDetailOf(kanji);
+        const result = builder.generateDetail(kanji);
         this.bot.sendMessage(CHANNEL, "Let's learn this kanji", result);
       })
     })

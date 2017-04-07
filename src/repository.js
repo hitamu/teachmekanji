@@ -1,10 +1,16 @@
 import _ from 'lodash';
-import db from '../data/db.json';
+import db_en from '../data/db.json';
+import db_vi from '../data/db-vi.json';
 
 class Repository {
-	constructor(data = db) {
-		if(_.isEmpty(data)) throw new Error("Data must be valid.");
-		this.entities = data;
+  // TODO: Need to implement interface this one
+  // Temporary dirty code
+	constructor(lang = "en") {
+    if (lang == "vi") {
+      this.entities = db_vi;
+    } else {
+      this.entities = db_en;
+    }
 	}
 
 	getAll() {
